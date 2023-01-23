@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+
+{%block titleblock%}
+Monthly Reports
+{%endblock%}
+
+
+{%block bodyblock%}
+<h1><b><u>Montly Report Sheets : </u></b> </h1>
+<br>
+<br>
+<table class="table table-bordered border-dark" style="height: 100%;">
+    <tbody style="height: 100%;">
+        <tr>
+            <th scope="col"><h3><a href="{%url 'intapp:inthome' month=1%}">January</a></h3></th>
+            <th scope="col"><h3><a href="{%url 'intapp:inthome' month=2%}">Febraury</a></h3></th>
+            <th scope="col"><h3><a href="{%url 'intapp:inthome' month=3%}">March</a></h3></th>
+        </tr>
+        <tr>
+            <td><h3><a href="{%url 'intapp:inthome' month=4%}">April</a></h3></td>
+            <td><h3><a href="{%url 'intapp:inthome' month=5%}">May</a></h3></h3></td>
+            <td><h3><a href="{%url 'intapp:inthome' month=6%}">June</a></h3></td>
+
+        </tr>
+        <tr>
+            <td><h3><a href="{%url 'intapp:inthome' month=7%}">July</a></h3></td>
+            <td><h3><a href="{%url 'intapp:inthome' month=8%}">August</a></h3></td>
+            <td><h3><a href="{%url 'intapp:inthome' month=9%}">September</a></h3></td>
+        </tr>
+        <tr>
+            <td><h3><a href="{%url 'intapp:inthome' month=10%}">October</a></h3></td>
+            <td><h3><a href="{%url 'intapp:inthome' month=11%}">November</a></h3></td>
+            <td><h3><a href="{%url 'intapp:inthome' month=12%}">December</a></h3></td>
+        </tr>
+    </tbody>
+</table>
+
+
+{%endblock%}

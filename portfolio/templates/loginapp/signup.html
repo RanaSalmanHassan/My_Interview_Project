@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+
+{%block titleblock%}
+Sign Up Page
+{%endblock%}
+
+{%block bodyblock%}
+
+<h2>CREATE AN ACCOUNT! </h2>
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button  class="btn btn-outline-success"  type="submit">Sign Up</button>
+
+
+
+</form>
+<br>
+<a href="{%url 'loginapp:login'%}">Have an Account?</a>
+{%endblock%}

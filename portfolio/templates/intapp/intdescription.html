@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{%block titleblock%}
+Interview Home
+{%endblock%}
+{%block bodyblock%}
+
+
+
+<h1> <u><i><b>Interviews for month of {{ this_month }}</b></i></u> </h1>
+<br>
+
+
+
+<table  class="table table-bordered border-success" >
+    <thead style="height: 500%;">
+        <tr>
+            <th scope="col">Serail Number:</th>
+            <th scope="col">Date</th>
+            <th scope="col"><h1>Activities</h1></th>
+            <th scope="col">Numbers/Hours</th>
+            <th scope="col">Position of Interviewed Person</th>
+            <th scope="col">Marks (out of 10)</th>
+            <th scope="col"><h1>Comments</h1></th>
+            <th scope="col">Attachments</th>
+            <th scope="col">Refer</th>
+        </tr>
+    </thead>
+    <tbody style="height: 500%;">
+        {% for interview in interviews %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ interview.date }}</td>
+            <td style="width: 30%;">{{ interview.activities }}</td>
+            <td >{{ interview.no_of_Hours }}</td>
+            <td>{{ interview.positon_of_interviewd_person }}</td>
+            <td>{{ interview.marks }}</td>
+            <td style="width: 100%;">{{ interview.comments }}</td>
+            {%if interview.attachments%}
+            <td><a href="{{ interview.attachments.url }}">CV</a></td>
+            {%else%}
+            <td>No Cv</td>
+            {%endif%}
+            {%if interview.refer%}
+            <td>Yes</td>
+            {%else%}
+            <td>No</td>
+            {%endif%}
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<h3><b>Total Interviews Done In This Month : {{count}}</b></h3>
+
+
+
+
+
+
+
+{%endblock%}

@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+
+{%block titleblock%}
+Searched Results
+{%endblock%}
+
+{%block bodyblock%}
+
+{%for searched_result in searched_results%}
+<h1> Interviews for month of {{ this_month }} </h1>
+<table class="table table-bordered border-success">
+    <thead>
+        <tr>
+            <th scope="col">Serail Number:</th>
+            <th scope="col">Date</th>
+            <th scope="col">Activities</th>
+            <th scope="col">No of Hours</th>
+            <th scope="col">Position of Interviewed Person</th>
+            <th scope="col">Marks</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Attachments</th>
+            <th scope="col">Refer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ searched_result.date }}</td>
+            <td>{{ searched_result.activities }}</td>
+            <td>{{ searched_result.no_of_Hours }}</td>
+            <td>{{ searched_result.positon_of_interviewd_person }}</td>
+            <td>{{ searched_result.marks }}</td>
+            <td>{{ interview.comments }}</td>
+            {%if searched_result.attachments%}
+            <td><a href="{{ searched_result.attachments.url }}">CV</a></td>
+            {%else%}
+            <td>No Cv</td>
+            {%endif%}
+            {%if searched_result.refer%}
+            <td>Yes</td>
+            {%else%}
+            <td>No</td>
+            {%endif%}
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Total Interviews Done In This Month : {{count}}</h3>
+{%endblock%}
