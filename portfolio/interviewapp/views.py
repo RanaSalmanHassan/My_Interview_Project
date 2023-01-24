@@ -42,3 +42,22 @@ def IntDesciption(request,month):
 def Choose_Month(request):
     return render(request,'intapp/choose_month.html')
 
+
+
+def export_to_excel(request):
+    interviews = Interview.objects.all()
+    data = {
+        'Serial Number': [i.id for i in interviews],
+        'Date': [i.date for i in interviews],
+        'Activities': [i.activities for i in interviews],
+        'Numbers/Hours': [i.no_of_Hours for i in interviews],
+        'Position of Interviewed Person': [i.positon_of_interviewd_person for i in interviews],
+        'Marks (out of 10)': [i.marks for i in interviews],
+        'Comments': [i.comments for i in interviews],
+        'Attachments': [i.attachments.url if i.attachments else 'No CV' for i in interviews],
+        'Refer': ['Yes' if i.refer else 'No' for i in interviews]
+    }
+    df = pd.DataFrame(data)
+    df.to_csv('interviews.csv', index=False)
+    messages.success(request,'Successfully Exported To Excel!')
+    return render(request, 'intapp/intdescription.html', {'interviews': interviews})
